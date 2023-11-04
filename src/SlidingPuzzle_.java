@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class SlidingPuzzle extends GraphStateImpl {
+public class SlidingPuzzle_ extends GraphStateImpl {
     final int[][] board;
     final int n;
-    private int emptyCellRow;
-    private int emptyCellCol;
+    int emptyCellRow;
+    int emptyCellCol;
     private String moveName = null;
     Random random = new Random();
 
@@ -20,7 +20,7 @@ public class SlidingPuzzle extends GraphStateImpl {
         LEFT
     }
 
-    public SlidingPuzzle(int n) {
+    public SlidingPuzzle_(int n) {
         this.board = new int[n][n];
         this.n = n;
         this.emptyCellRow = 0;
@@ -38,14 +38,14 @@ public class SlidingPuzzle extends GraphStateImpl {
 
     }
 
-    public SlidingPuzzle(SlidingPuzzle slidingPuzzle) {
-        this.n = slidingPuzzle.n;
+    public SlidingPuzzle_(SlidingPuzzle_ SlidingPuzzle_) {
+        this.n = SlidingPuzzle_.n;
         this.board = new int[this.n][this.n];
-        this.emptyCellRow = slidingPuzzle.emptyCellRow;
-        this.emptyCellCol = slidingPuzzle.emptyCellCol;
+        this.emptyCellRow = SlidingPuzzle_.emptyCellRow;
+        this.emptyCellCol = SlidingPuzzle_.emptyCellCol;
 
         for (int i = 0; i < n; i++) {
-            this.board[i] = java.util.Arrays.copyOf(slidingPuzzle.board[i], n);
+            this.board[i] = java.util.Arrays.copyOf(SlidingPuzzle_.board[i], n);
         }
     }
 
@@ -141,7 +141,7 @@ public class SlidingPuzzle extends GraphStateImpl {
         List<GraphState> children = new ArrayList<>();
 
         for(int i = 0; i < 4; i++) {
-            SlidingPuzzle child = new SlidingPuzzle(this);
+            SlidingPuzzle_ child = new SlidingPuzzle_(this);
             boolean moveValid  = child.moveSinglePiece(Direction.values()[i]);
 
             if(moveValid) {
