@@ -56,9 +56,9 @@ public class SlidingPuzzle_ extends GraphStateImpl {
         return true;
     }
 
-    public void setMoveName(Direction direction){
-        this.moveName = direction.toString();
-    }
+//    public void setMoveName(Direction direction){
+//        this.moveName = direction.toString();
+//    }
 
     public boolean moveSinglePiece(Direction direction) {
         int newEmptyCellCol = this.emptyCellCol;
@@ -86,10 +86,11 @@ public class SlidingPuzzle_ extends GraphStateImpl {
             this.board[emptyCellRow][emptyCellCol] = slidingPieceValue;
             this.emptyCellRow = newEmptyCellRow;
             this.emptyCellCol = newEmptyCellCol;
-//            after setting a new empty cell position
+
             this.board[emptyCellRow][emptyCellCol] = 0;
 
-            setMoveName(direction);
+//            setMoveName(direction);
+            this.setMoveName(direction.name());
 
             return true;
         }
@@ -115,25 +116,6 @@ public class SlidingPuzzle_ extends GraphStateImpl {
             }
         }
         return true;
-    }
-
-    public List<Direction> getPossibleMoves() {
-        List<Direction> possibleMoves = new ArrayList<>();
-
-        if (isPositionValid(this.emptyCellRow - 1, this.emptyCellCol)) {
-            possibleMoves.add(Direction.UP);
-        }
-        if (isPositionValid(this.emptyCellRow + 1, this.emptyCellCol)) {
-            possibleMoves.add(Direction.DOWN);
-        }
-        if (isPositionValid(this.emptyCellRow, this.emptyCellCol - 1)) {
-            possibleMoves.add(Direction.LEFT);
-        }
-        if (isPositionValid(this.emptyCellRow, this.emptyCellCol + 1)) {
-            possibleMoves.add(Direction.RIGHT);
-        }
-        
-        return possibleMoves;
     }
 
     @Override
