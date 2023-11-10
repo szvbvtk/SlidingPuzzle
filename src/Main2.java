@@ -2,6 +2,8 @@ import sac.StateImpl;
 import sac.graph.AStar;
 import sac.graph.GraphSearchAlgorithm;
 
+import java.util.Random;
+
 public class Main2 {
     public static void main(String[] args) {
 
@@ -14,10 +16,8 @@ public class Main2 {
             SlidingPuzzle_ board = new SlidingPuzzle_(3);
             board.shuffle(1000);
 
-            SlidingPuzzle_ shuffledBoardMT = new SlidingPuzzle_(board);
-            SlidingPuzzle_ shuffledBoardMH = new SlidingPuzzle_(board);
-            GraphSearchAlgorithm gsaMT = new AStar(shuffledBoardMT);
-            GraphSearchAlgorithm gsaMH = new AStar(shuffledBoardMH);
+            GraphSearchAlgorithm gsaMT = new AStar(board);
+            GraphSearchAlgorithm gsaMH = new AStar(board);
 
             SlidingPuzzle_.setHFunction(new MisplacedTilesHeuristic());
             gsaMT.execute();

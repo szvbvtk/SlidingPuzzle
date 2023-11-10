@@ -9,9 +9,9 @@ public class MisplacedTilesHeuristic extends StateFunction {
         int n = slidingPuzzle.n;
         int[][] board = slidingPuzzle.board;
 
-        for(int i = 0; i < n; i++) {
-            for(int j = 0; j < n; j++){
-                if(board[i][j] != i*n+j && board[i][j] != 0){
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                if (board[i][j] != i * n + j && board[i][j] != 0) {
                     numberOfMisplacedTiles++;
                 }
             }

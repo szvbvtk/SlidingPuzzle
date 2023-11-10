@@ -9,7 +9,6 @@ public class SlidingPuzzle_ extends GraphStateImpl {
     final int n;
     int emptyCellRow;
     int emptyCellCol;
-    private String moveName = null;
     Random random = new Random();
 
 
@@ -50,15 +49,12 @@ public class SlidingPuzzle_ extends GraphStateImpl {
     }
 
     public boolean isPositionValid(int row, int col) {
-        if(row < 0 || row >= this.n || col < 0 || col >= this.n){
+        if (row < 0 || row >= this.n || col < 0 || col >= this.n) {
             return false;
         }
         return true;
     }
 
-//    public void setMoveName(Direction direction){
-//        this.moveName = direction.toString();
-//    }
 
     public boolean moveSinglePiece(Direction direction) {
         int newEmptyCellCol = this.emptyCellCol;
@@ -81,7 +77,7 @@ public class SlidingPuzzle_ extends GraphStateImpl {
 
         boolean positionValid = isPositionValid(newEmptyCellRow, newEmptyCellCol);
 
-        if(positionValid){
+        if (positionValid) {
             int slidingPieceValue = board[newEmptyCellRow][newEmptyCellCol];
             this.board[emptyCellRow][emptyCellCol] = slidingPieceValue;
             this.emptyCellRow = newEmptyCellRow;
@@ -89,17 +85,16 @@ public class SlidingPuzzle_ extends GraphStateImpl {
 
             this.board[emptyCellRow][emptyCellCol] = 0;
 
-//            setMoveName(direction);
-            this.setMoveName(direction.name());
+//            this.setMoveName(direction.name());
 
             return true;
         }
         return false;
     }
 
-    public void shuffle(int numberOfpossibleMoves) {
+    public void shuffle(int numberOfMoves) {
 
-        for(int i = 0; i < numberOfpossibleMoves; i++) {
+        for (int i = 0; i < numberOfMoves; i++) {
             int randomNumber = this.random.nextInt(Direction.values().length);
             Direction randomDirection = Direction.values()[randomNumber];
             moveSinglePiece(randomDirection);
@@ -122,18 +117,18 @@ public class SlidingPuzzle_ extends GraphStateImpl {
     public List<GraphState> generateChildren() {
         List<GraphState> children = new ArrayList<>();
 
-        for(int i = 0; i < 4; i++) {
+        for (int i = 0; i < 4; i++) {
             SlidingPuzzle_ child = new SlidingPuzzle_(this);
-            boolean moveValid  = child.moveSinglePiece(Direction.values()[i]);
+            boolean moveValid = child.moveSinglePiece(Direction.values()[i]);
 
-            if(moveValid) {
+            if (moveValid) {
+                child.setMoveName(Direction.values()[i].name());
                 children.add(child);
             }
         }
 
         return children;
     }
-
 
 
     public String toString() {

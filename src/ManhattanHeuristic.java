@@ -12,9 +12,9 @@ public class ManhattanHeuristic extends StateFunction {
 
         int accumulatedDistance = 0;
 
-        for(int i = 0; i < n; i++) {
-            for(int j = 0; j < n; j++) {
-                if(i == emptyCellRow && j == emptyCellCol )
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                if (i == emptyCellRow && j == emptyCellCol)
                     continue;
 
                 accumulatedDistance += manhattanDistance(n, i, j, board[i][j]);

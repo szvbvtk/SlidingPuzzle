@@ -10,8 +10,6 @@ public class Main {
         System.out.println(puzzle);
 
         GraphSearchAlgorithm gsa = new AStar(puzzle);
-//        SlidingPuzzle_.setHFunction(new MisplacedTilesHeuristic());
-//        SlidingPuzzle_.setHFunction(new ManhattanHeuristic());
         gsa.execute();
 
         SlidingPuzzle_ solution = (SlidingPuzzle_) gsa.getSolutions().get(0);
