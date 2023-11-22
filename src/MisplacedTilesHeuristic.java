@@ -11,7 +11,7 @@ public class MisplacedTilesHeuristic extends StateFunction {
 
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
-                if (board[i][j] != i * n + j /*&& board[i][j] != 0*/ && (slidingPuzzle.emptyCellRow != i || slidingPuzzle.emptyCellCol != j)) {
+                if (board[i][j] != i * n + j /*&& board[i][j] != 0*/ && (slidingPuzzle.emptyCellRow != i && slidingPuzzle.emptyCellCol != j)) {
                     numberOfMisplacedTiles++;
                 }
             }
